@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import Desk from './components/Desk';
+import BookingForm from './components/BookingForm';
+import Dashboard from './components/Dashboard';
 import { desks, membershipTiers } from './data';
 
 function App() {
@@ -32,16 +34,16 @@ function App() {
 };
   
   return (
-    <div className="App">
       <div className="App">
-            <h1>Co-working Space Booking System</h1>
-            <div className="desks">
-                {deskData.map(desk => (
-                    <Desk key={desk.id} desk={desk} />
-                ))}
-            </div>
-        </div>      
-    </div>
+          <h1>Co-working Space Booking System</h1>
+          <div className="desks">
+              {deskData.map(desk => (
+                  <Desk key={desk.id} desk={desk} />
+              ))}
+          </div>
+          <BookingForm onBooking={handleBooking} desks={deskData} />
+          <Dashboard totalRevenue={totalRevenue} />
+      </div>      
   );
 }
 
